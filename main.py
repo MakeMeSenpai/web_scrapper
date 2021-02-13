@@ -76,4 +76,37 @@ bold_text = soup.select("p#paragraph-id b")
 print(bold_text)
 print("*******************************")
 
-""""""
+"""MORE!"""
+print("and more!")
+# We can use loops!
+paragraphs = soup.select("body > p")
+
+for paragraph in paragraphs:
+	print(paragraph.select("i"))
+print("*******************************")
+
+# or search by certain styles
+centered_stuff = soup.select("[align=middle]")
+print(centered_stuff)
+print("*******************************")
+
+# We can parse collected information
+header = soup.find("h2")
+print(header) # <h2>First Header 2</h2>
+print(header.string)  # First Header 2
+print("*******************************")
+
+# However if there are more than one element, we should use a method
+div = soup.find("div")
+print(div.string) # Not what you want, returns None
+print(div.get_text())
+print("*******************************")
+
+# we can also get specific properties from an element
+link = soup.find("a")
+print(link['href'])
+print("*******************************")
+
+# And lastly follow down the path of tags
+print(soup.body.div.h1.string)
+print("*******************************")
